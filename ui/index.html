@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f8fb" />
+    <title>Sentinel Bank | Fraud Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">S</div>
+          <div>
+            <strong>sentinel</strong>
+            <span>bank intelligence</span>
+          </div>
+        </div>
+
+        <div class="workspace-label">Workspace</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-view="Overview"><span class="icon">⌂</span>Overview</button>
+          <button class="nav-item" data-view="Transactions"><span class="icon">↗</span>Transactions</button>
+          <button class="nav-item" data-view="Fraud alerts"><span class="icon">⌁</span>Fraud alerts <b class="nav-badge">12</b></button>
+          <button class="nav-item" data-view="Customers"><span class="icon">♙</span>Customers</button>
+          <button class="nav-item" data-view="Bank network"><span class="icon">◈</span>Bank network</button>
+        </nav>
+
+        <div class="workspace-label">Manage</div>
+        <nav class="main-nav" aria-label="Management navigation">
+          <button class="nav-item" data-view="Reports"><span class="icon">▤</span>Reports</button>
+          <button class="nav-item" data-view="Settings"><span class="icon">⚙</span>Settings</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="support-card">
+            <div class="support-icon">?</div>
+            <div><strong>Need help?</strong><span>Talk to our support team</span></div>
+            <button aria-label="Open support">→</button>
+          </div>
+          <div class="profile">
+            <div class="avatar">AM</div>
+            <div><strong>Alex Morgan</strong><span>Risk operations</span></div>
+            <button class="more-btn" aria-label="Profile options">•••</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Workspace</span><i>/</i><strong id="page-title">Overview</strong></div>
+          <div class="top-actions">
+            <button class="icon-button notification-button" aria-label="Notifications">♢<span></span></button>
+            <button class="help-button">◎ <span>Help center</span></button>
+            <button class="date-button" id="date-filter">Last 30 days <span>⌄</span></button>
+          </div>
+        </header>
+
+        <div class="page-body">
+          <section class="welcome-row">
+            <div>
+              <p class="eyebrow">Wednesday, October 29, 2026</p>
+              <h1>Good morning, Alex <span>✦</span></h1>
+              <p class="muted">Here’s what’s happening across your fraud network today.</p>
+            </div>
+            <button class="primary-button" id="new-analysis"><span>＋</span> New analysis</button>
+          </section>
+
+          <section class="metrics-grid" aria-label="Key metrics">
+            <article class="metric-card">
+              <div class="metric-heading"><span>Transactions screened</span><span class="metric-icon blue">◌</span></div>
+              <strong class="metric-value">2.84M</strong>
+              <div class="metric-foot"><span class="positive">↗ 18.4%</span><span>vs. last period</span></div>
+              <div class="mini-bars blue-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Fraud prevented</span><span class="metric-icon green">✓</span></div>
+              <strong class="metric-value">$486,920</strong>
+              <div class="metric-foot"><span class="positive">↗ 12.8%</span><span>vs. last period</span></div>
+              <div class="mini-bars green-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Detection rate</span><span class="metric-icon purple">◉</span></div>
+              <strong class="metric-value">99.2%</strong>
+              <div class="metric-foot"><span class="positive">↗ 2.1%</span><span>vs. last period</span></div>
+              <div class="mini-bars purple-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Open investigations</span><span class="metric-icon orange">!</span></div>
+              <strong class="metric-value">24</strong>
+              <div class="metric-foot"><span class="negative">↘ 6.4%</span><span>vs. last period</span></div>
+              <div class="mini-bars orange-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </article>
+          </section>
+
+          <section class="content-grid">
+            <article class="panel activity-panel">
+              <div class="panel-header">
+                <div><h2>Risk activity</h2><p>Real-time overview of screened transaction signals</p></div>
+                <button class="select-button" id="chart-range">Weekly <span>⌄</span></button>
+              </div>
+              <div class="chart-summary"><strong>$1.24M</strong><span class="positive">↗ 8.6%</span><small>risk value monitored</small></div>
+              <div class="chart-wrap">
+                <div class="y-axis"><span>$80k</span><span>$60k</span><span>$40k</span><span>$20k</span><span>$0</span></div>
+                <svg class="risk-chart" viewBox="0 0 760 225" role="img" aria-label="Risk activity chart">
+                  <defs><linearGradient id="area-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#6f8dff" stop-opacity=".28"/><stop offset="100%" stop-color="#6f8dff" stop-opacity="0"/></linearGradient></defs>
+                  <g class="grid-lines"><path d="M0 22H760M0 67H760M0 112H760M0 157H760M0 202H760"/></g>
+                  <path class="area" d="M0 163 C38 155 50 177 82 160 S120 114 155 139 S205 154 235 116 S285 121 316 98 S355 113 390 71 S425 94 456 90 S505 35 535 65 S585 80 615 48 S660 83 685 54 S725 67 760 28 V202H0Z"/>
+                  <path class="line" d="M0 163 C38 155 50 177 82 160 S120 114 155 139 S205 154 235 116 S285 121 316 98 S355 113 390 71 S425 94 456 90 S505 35 535 65 S585 80 615 48 S660 83 685 54 S725 67 760 28"/>
+                  <circle cx="615" cy="48" r="5" class="point"/><circle cx="615" cy="48" r="10" class="point-ring"/>
+                </svg>
+                <div class="x-axis"><span>Oct 01</span><span>Oct 07</span><span>Oct 14</span><span>Oct 21</span><span>Oct 29</span></div>
+              </div>
+              <div class="legend"><span><i class="legend-dot blue-dot"></i>Screened</span><span><i class="legend-dot orange-dot"></i>Flagged</span><span class="updated">Updated 4 min ago <b>↻</b></span></div>
+            </article>
+
+            <article class="panel score-panel">
+              <div class="panel-header"><div><h2>Network health</h2><p>Federated model performance</p></div><span class="status-pill"><i></i> Live</span></div>
+              <div class="score-ring"><div><strong>94<span>/100</span></strong><small>Excellent</small></div></div>
+              <p class="score-description">Your fraud detection network is performing above its benchmark.</p>
+              <div class="score-stats"><div><strong>+4.8%</strong><span>vs. last month</span></div><div><strong>18</strong><span>active banks</span></div></div>
+              <button class="outline-button" id="network-details">View network details <span>→</span></button>
+            </article>
+          </section>
+
+          <section class="bottom-grid">
+            <article class="panel alerts-panel">
+              <div class="panel-header"><div><h2>Priority alerts</h2><p>Transactions requiring your attention</p></div><button class="text-button" id="view-alerts">View all <span>→</span></button></div>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Transaction</th><th>Customer</th><th>Risk score</th><th>Amount</th><th>Detected</th><th></th></tr></thead>
+                  <tbody id="alerts-body">
+                    <tr><td><span class="transaction-id">TXN-849210</span><small>Online purchase · Card ending 4821</small></td><td>Marcus Chen</td><td><span class="risk high">92 High</span></td><td class="amount">$2,480.00</td><td>4 min ago</td><td><button class="review-button">Review</button></td></tr>
+                    <tr><td><span class="transaction-id">TXN-849173</span><small>Wire transfer · Business account</small></td><td>Northstar Labs</td><td><span class="risk high">87 High</span></td><td class="amount">$18,750.00</td><td>18 min ago</td><td><button class="review-button">Review</button></td></tr>
+                    <tr><td><span class="transaction-id">TXN-849102</span><small>ATM withdrawal · Card ending 1094</small></td><td>Priya Shah</td><td><span class="risk medium">74 Medium</span></td><td class="amount">$1,200.00</td><td>42 min ago</td><td><button class="review-button">Review</button></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel insight-panel">
+              <div class="panel-header"><div><h2>Detection insight</h2><p>From your federated network</p></div><span class="spark-icon">✦</span></div>
+              <div class="insight-callout"><span class="insight-shield">◈</span><div><strong>Unusual velocity detected</strong><p>12 accounts show a 3× increase in cross-border activity in the last 24 hours.</p></div></div>
+              <div class="insight-row"><span>Suggested action</span><strong>Review cross-border rules <span>→</span></strong></div>
+              <div class="insight-row"><span>Confidence</span><strong class="positive">98.4%</strong></div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="analysis-modal" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" id="close-modal" aria-label="Close">×</button>
+        <div class="modal-kicker">Transaction intelligence</div>
+        <h2 id="modal-title">Run a risk analysis</h2>
+        <p class="muted">Check a transaction against Sentinel’s network signals.</p>
+        <form id="analysis-form">
+          <label>Transaction amount<input type="number" id="amount-input" min="1" value="2480" required /></label>
+          <label>Transaction type<select id="type-input"><option value="card">Online card purchase</option><option value="wire">Wire transfer</option><option value="atm">ATM withdrawal</option></select></label>
+          <label>Location change<select id="location-input"><option value="normal">Usual location</option><option value="new">New location</option><option value="cross">Cross-border</option></select></label>
+          <button class="primary-button full-width" type="submit">Analyze transaction <span>→</span></button>
+        </form>
+        <div class="analysis-result" id="analysis-result" hidden></div>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

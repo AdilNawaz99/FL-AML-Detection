@@ -1,0 +1,146 @@
+# Default configuration for the ULB Credit Card Fraud Detection experiments.
+# All split fractions are fractions of the original dataset and must sum to 1.
+
+project:
+  name: AML-Federated-DNN
+  experiment_name: ulb_fraud_default
+
+dataset:
+  path: data/raw/creditcard.csv
+  target_column: Class
+  feature_columns:
+    - Time
+    - Amount
+    - V1
+    - V2
+    - V3
+    - V4
+    - V5
+    - V6
+    - V7
+    - V8
+    - V9
+    - V10
+    - V11
+    - V12
+    - V13
+    - V14
+    - V15
+    - V16
+    - V17
+    - V18
+    - V19
+    - V20
+    - V21
+    - V22
+    - V23
+    - V24
+    - V25
+    - V26
+    - V27
+    - V28
+  expected_row_count: 284807
+  strict_row_count: false
+  allow_extra_columns: false
+  split:
+    train_size: 0.80
+    validation_size: 0.10
+    test_size: 0.10
+    stratify: true
+
+validation:
+  allow_missing_values: false
+  allow_duplicates: true
+  permitted_target_values: [0, 1]
+  fail_on_infinite_values: true
+  # Suspicious records are reported; no records are deleted automatically.
+  clean_records: false
+
+preprocessing:
+  scaler: standard
+  # The scaler will be fitted only on the training partition.
+  scale_features: all
+  persist_path: results/models/preprocessor.joblib
+
+imbalance:
+  strategy: class_weight  # one of: class_weight, oversampling, none
+  class_weight_method: balanced
+  oversampling:
+    enabled: false
+    # Training clients only; validation and test sets are never oversampled.
+    method: random
+
+model:
+  hidden_layers: [128, 64, 32]
+  dropout_rate: 0.30
+  output_activation: sigmoid
+  loss: binary_crossentropy
+  optimizer: adam
+  learning_rate: 0.001
+
+training:
+  batch_size: 256
+  epochs: 100
+  early_stopping:
+    monitor: val_pr_auc
+    mode: max
+    patience: 10
+    restore_best_weights: true
+
+evaluation:
+  default_threshold: 0.50
+  threshold_selection: fixed  # one of: fixed, validation_f1, validation_youden
+  primary_metrics: [precision, recall, f1, pr_auc, roc_auc]
+
+partition:
+  type: iid  # one of: iid, dirichlet
+  dirichlet_alpha: 0.50
+  min_client_samples: 1
+  min_fraud_samples_per_client: 0
+
+federated:
+  num_clients: 5
+  rounds: 10
+  local_epochs: 1
+  batch_size: 256
+  client_fraction: 1.0
+  # Client records remain local. Only parameters and approved aggregates move.
+  evaluate_every_round: true
+
+fedprox:
+  mu: 0.01
+
+adaptive_fl:
+  algorithm_name: APFA
+  # APFA combines clipped sample-size, validation-performance, and update
+  # reliability components. Its formula and limits will be documented before
+  # implementation; these values are not experimental findings.
+  performance_metric: pr_auc
+  sample_size_exponent: 1.0
+  performance_exponent: 1.0
+  reliability_exponent: 1.0
+  max_client_weight: 0.40
+  min_client_weight: 0.02
+
+personalization:
+  enabled: true
+  method: local_finetuning_from_global
+  finetune_epochs: 1
+  finetune_learning_rate: 0.0001
+
+communication:
+  include_parameter_dtype_bytes: true
+  parameter_dtype: float32
+
+experiment:
+  seed: 42
+  seeds: [42, 123, 2024]
+  deterministic_ops: true
+  output_root: results
+  save_config_snapshot: true
+
+logging:
+  level: INFO
+  format: json
+  log_directory: results/logs
+
